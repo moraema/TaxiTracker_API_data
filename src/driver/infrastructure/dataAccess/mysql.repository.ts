@@ -1,6 +1,7 @@
 import { dbmysql } from "../../../database/application/mysql";
 import { DriversRepository } from "../../domain/repository/drivers.repository";
 import { Drivers } from "../../domain/entity/drivers";
+import { v4 as uuidv4 } from "uuid";
 
 
 export class MysqlDriver implements DriversRepository {
@@ -15,15 +16,27 @@ export class MysqlDriver implements DriversRepository {
     }
 
     addDriver(driver: Drivers): Promise<Drivers> {
-        const sql = 'CALL InsertDriver (?, ?, ?, ?, ?)';
+        const sql = 'CALL InsertDriver (?, ?, ?, ?, ?, ?)';
 
-        return dbmysql.execute(sql, [
-            driver.id,
+        const newDriverId = uuidv4();
+
+        const newDriver = new Drivers(
+            newDriverId,
             driver.kit_id,
             driver.name,
             driver.last_name,
-            driver.pin
-        ]).then()
+            driver.pin,
+            driver.image
+        );
+
+        return dbmysql.execute(sql, [
+            newDriver.id,
+            newDriver.kit_id,
+            newDriver.name,
+            newDriver.last_name,
+            newDriver.pin,
+            newDriver.image
+        ]).then(() => newDriver)
     }
 
     deleteByIdDriver(driver_id: string): Promise<string> {

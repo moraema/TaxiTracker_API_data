@@ -1,6 +1,7 @@
 import { dbmysql } from "../../../database/application/mysql";
 import { Kits } from "../../domain/entity/kits";
 import { KitsRepository } from "../../domain/repository/kits.repository";
+import { v4 as uuidv4 } from "uuid";
 
 export class MysqlKits implements KitsRepository {
  
@@ -26,11 +27,19 @@ export class MysqlKits implements KitsRepository {
     addKits(kits: Kits): Promise<Kits> {
         const sql = 'CALL InsertKits (?, ?, ?)';
 
-        return dbmysql.execute(sql, [
-            kits.id, 
-            kits.user_id,
+        const newKitId = uuidv4();
+       
+        const newKit = new Kits(
+            newKitId, 
+            kits.user_id, 
             kits.unit_code
-        ]).then()
+        );
+
+        return dbmysql.execute(sql, [
+            newKit.id,
+            newKit.user_id,
+            newKit.unit_code
+        ]).then( () => newKit);
     }
 
 }

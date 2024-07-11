@@ -5,6 +5,6 @@ export class Drivers {
        readonly name: string,
        readonly last_name: string,
        readonly pin: number,
-       readonly unit_code: string
+       readonly image: string
     ) {}   
 }
