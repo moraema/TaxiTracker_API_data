@@ -25,20 +25,22 @@ export class MysqlKits implements KitsRepository {
     }
 
     addKits(kits: Kits): Promise<Kits> {
-        const sql = 'CALL InsertKits (?, ?, ?)';
+        const sql = 'CALL InsertKits (?, ?, ?, ?)';
 
         const newKitId = uuidv4();
        
         const newKit = new Kits(
             newKitId, 
             kits.user_id, 
-            kits.unit_code
+            kits.unit_code,
+            kits.name
         );
 
         return dbmysql.execute(sql, [
             newKit.id,
             newKit.user_id,
-            newKit.unit_code
+            newKit.unit_code,
+            newKit.name
         ]).then( () => newKit);
     }
 

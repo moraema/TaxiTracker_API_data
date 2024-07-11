@@ -16,7 +16,9 @@ export class AddDriverController {
             }
 
           
-            const uploadResponse = await cloudinary.v2.uploader.upload(file.path);
+            const uploadResponse = await cloudinary.v2.uploader.upload(file.path, {
+                folder: 'taxitracker'
+            });
 
            
             const driverData = {
