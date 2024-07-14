@@ -6,6 +6,7 @@ import { driverRouter } from './src/driver/infrastructure/routes/driver.routes';
 import { starsRouter } from './src/stars/infrastructure/routes/stars.routes';
 import { drivingRouter } from './src/driving/infrastructure/routes/driving.routes';
 import { travelsRouter } from './src/travels/infrastructure/routes/travels.routes';
+import { graphicsroutes } from './src/graphics/infrastructure/routes/graphics.routes';
 
 const app = express();
 
@@ -35,6 +36,7 @@ app.use('/drivings', drivingRouter);
 app.use('/kits', kitsrouter);
 app.use('/stars', starsRouter);
 app.use('/travels', travelsRouter);
+app.use('/graphics', graphicsroutes)
 
 
 

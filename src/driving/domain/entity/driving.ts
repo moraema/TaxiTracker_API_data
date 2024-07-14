@@ -8,8 +8,5 @@ export class Driving {
         readonly desacceleration: number,
         readonly vibrations: number,
         readonly travel_coordenate_latitude: string,
-
-    
-
     ){}
 }

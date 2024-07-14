@@ -8,15 +8,15 @@ export class AddDriverController {
     async run(req: Request, res: Response) {
         try {
            
-            const file = req.file;
+            const image = req.file;
           
 
-            if (!file) {
+            if (!image) {
                 throw new Error('No file was uploaded.');
             }
 
           
-            const uploadResponse = await cloudinary.v2.uploader.upload(file.path, {
+            const uploadResponse = await cloudinary.v2.uploader.upload(image.path, {
                 folder: 'taxitracker'
             });
 
