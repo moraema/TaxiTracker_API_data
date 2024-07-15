@@ -1,7 +1,7 @@
 import { Kits } from "../entity/kits";
 
 export interface KitsRepository {
-    getAllKits(): Promise<Kits[]>;
+    getKitsByUserId(user_id : string): Promise<Kits[] | null>;
     deleteByIdKits(kits_id: string): Promise<string>;
     addKits(kits: Kits): Promise<Kits>;
 }

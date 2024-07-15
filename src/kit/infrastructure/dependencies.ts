@@ -1,10 +1,10 @@
 import { MysqlKits } from "./dataAccess/mysql.repository";
-import { GetAllKits } from "../application/useCase/get.all.kits";
+import { GetKitsByUserId } from "../application/useCase/get.kits.userId";
 import { DeleteKits } from "../application/useCase/delete.kits";
 import { AddKits } from "../application/useCase/add.kits";
 
 
-import { GetAllKitsController } from "./controllers/get.all.controller";
+import { GetKitsByUserIdController } from "./controllers/get.kits.userId.controller";
 import { DeleteKitsController } from "./controllers/delete.kit.controller";
 import { AddKitsController } from "./controllers/add.kits";
 
@@ -12,13 +12,13 @@ import { AddKitsController } from "./controllers/add.kits";
 const mysqlKits = new MysqlKits();
 
 
-const getAllKits = new GetAllKits(mysqlKits);
+const getKitsByUserId = new GetKitsByUserId(mysqlKits);
 const deleteKits = new DeleteKits(mysqlKits);
 const addKits = new AddKits(mysqlKits);
 
 
-export const getAllKitsController = new GetAllKitsController(
-    getAllKits
+export const getKitsByUserIdController = new GetKitsByUserIdController(
+    getKitsByUserId
 );
 
 export const deleteKitsController = new DeleteKitsController(

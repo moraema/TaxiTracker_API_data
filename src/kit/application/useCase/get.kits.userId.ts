@@ -1,11 +1,11 @@
 import { KitsRepository } from '../../domain/repository/kits.repository';
 
-export class GetAllKits {
+export class GetKitsByUserId {
     constructor(readonly kitsrepository: KitsRepository) {}
 
-    async run() {
+    async run(user_id: string) {
         try {
-            const kits = await this.kitsrepository.getAllKits();
+            const kits = await this.kitsrepository.getKitsByUserId(user_id);
 
             if (kits?.length == 0) {
                 throw new Error("There's no kits")

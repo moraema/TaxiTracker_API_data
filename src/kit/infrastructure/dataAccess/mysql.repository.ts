@@ -6,10 +6,10 @@ import { v4 as uuidv4 } from "uuid";
 export class MysqlKits implements KitsRepository {
  
 
-    getAllKits(): Promise<Kits[]> {
-        const sql = 'CALL GetAllKits()';
+    getKitsByUserId(user_id: string): Promise<Kits[]> {
+        const sql = 'CALL getKitsByUserId (?)';
         
-        return dbmysql.execute(sql)
+        return dbmysql.execute(sql, [user_id])
         .then((res:any) => 
             res[0] as Kits[]
         )   
