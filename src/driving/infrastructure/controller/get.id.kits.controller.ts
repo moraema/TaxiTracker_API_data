@@ -12,7 +12,7 @@ export class GetDrivingByKitsIdController  {
 
             if (kits) {
                 res.status(200).send({
-                    status: 'Success',
+                    status: 'success',
                     message: 'found kits',
                     data: kits
                 });

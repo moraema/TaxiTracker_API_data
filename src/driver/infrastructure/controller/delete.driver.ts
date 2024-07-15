@@ -13,7 +13,7 @@ export class DeleteDriverController {
 
             if (driverId) {
                 return res.status(200).send({
-                    status: 'Success',
+                    status: 'success',
                     message: 'Successfully removed driver',
                     data: driverId
                 });

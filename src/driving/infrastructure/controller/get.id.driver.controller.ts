@@ -12,7 +12,7 @@ export class GetDrivingByDriverIdController {
 
                 if (driving) {
                     res.status(200).send({
-                        status: 'Success',
+                        status: 'success',
                         message: 'Found driving',
                         data: driving
                     });

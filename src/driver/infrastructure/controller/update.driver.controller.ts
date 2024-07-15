@@ -37,7 +37,7 @@ export class UpdateDriverController {
 
             if (updateDriver) {
                 res.status(200).send({
-                    status: 'Success',
+                    status: 'success',
                     message: 'Driver update successfully',
                     data: updateDriver
                 });

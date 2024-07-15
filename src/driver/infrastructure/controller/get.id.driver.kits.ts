@@ -12,7 +12,7 @@ export class GetDriversByKitIdController {
 
             if (drivers) {
                res.status(200).send({
-                status: 'Success',
+                status: 'success',
                 message: 'Driver retrieved successfully',
                 data: drivers
                });

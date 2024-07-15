@@ -12,6 +12,14 @@ export class MysqlGraphics implements GraphicsRepository {
            .then((result: any) => {
             return result[0][0] as Graphics;
            })
-        
+    }
+
+    GetTravelsByDriverDistance(driver_id: string): Promise<Graphics | null> {
+        const sql = 'CALL GetTravelsByDriverDistance (?)';
+
+        return dbmysql.execute(sql, [driver_id])
+          .then((result: any) => {
+            return result[0][0] as Graphics;
+          })
     }
 }

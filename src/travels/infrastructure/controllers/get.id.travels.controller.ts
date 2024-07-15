@@ -13,7 +13,7 @@ export class GetTravelsByDriverIdController {
 
             if (travelsDriverId) {
                 res.status(200).send({
-                    status: 'Success',
+                    status: 'success',
                     message: 'found travels coordinates',
                     data: travelsDriverId
                 });

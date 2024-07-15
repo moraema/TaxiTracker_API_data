@@ -12,7 +12,7 @@ export class GetStarsByIdController {
 
             if (stars) {
                 res.status(200).send({
-                    status: 'Sucess',
+                    status: 'success',
                     message: 'found starts',
                     data: stars
                 });

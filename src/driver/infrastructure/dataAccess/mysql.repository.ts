@@ -53,10 +53,10 @@ export class MysqlDriver implements DriversRepository {
 
         return dbmysql.execute(sql, [
             driver_id,
-            name,
-            last_name,
-            unit_code, 
-            image
+            name || null,
+            last_name || null,
+            unit_code || null, 
+            image || null
         ])
           .then(() => true)
           .catch((error: any) => {

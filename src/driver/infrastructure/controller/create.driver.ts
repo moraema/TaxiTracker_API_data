@@ -32,7 +32,7 @@ export class AddDriverController {
            
             if (result) {
                 res.status(200).send({
-                    status: 'Success',
+                    status: 'success',
                     message: 'Driver added successfully',
                     data: result
                 });

@@ -11,7 +11,7 @@ export class GetDrivingController {
 
             if (driving?.length) {
                 res.status(200).send({
-                    status: 'Success',
+                    status: 'success',
                     message: 'Drivings retrieved successfully',
                     data: driving
                 });

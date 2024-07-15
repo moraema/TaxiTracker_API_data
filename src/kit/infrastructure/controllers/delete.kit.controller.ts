@@ -11,7 +11,7 @@ export class DeleteKitsController {
            
            if (kitsId) {
                return res.status(200).send({
-                status: 'Success',
+                status: 'success',
                 message: 'Successfully removed kit',
                 data: kitsId
                }) 

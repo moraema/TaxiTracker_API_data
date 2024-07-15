@@ -11,7 +11,7 @@ export class GetKitsByUserIdController {
 
             if (kits?.length) {
                 res.status(200).send({
-                    status: 'Sucess',
+                    status: 'success',
                     message: 'Kits recovered by user id successfully',
                     data: kits
                 })

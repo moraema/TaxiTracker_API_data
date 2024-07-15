@@ -12,7 +12,7 @@ export class AddStarsController {
 
             if (result) {
                 res.status(200).send({
-                    status: 'Success',
+                    status: 'success',
                     message: 'Stars added successfully',
                     data: result
                 });
