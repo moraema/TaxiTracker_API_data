@@ -4,10 +4,10 @@ import { DriversRepository } from "../../domain/repository/drivers.repository";
 export class UpdateDriver {
     constructor (readonly driversRepository: DriversRepository) {}
 
-    async run(driver_id: string, name: string, last_name: string, unit_code: string, image: string) {
+    async run(driver_id: string, name: string, last_name: string, image: string) {
 
         try {
-            const updateDriver = await this.driversRepository.updateByIdDriver(driver_id, name, last_name, unit_code, image);
+            const updateDriver = await this.driversRepository.updateByIdDriver(driver_id, name, last_name, image);
 
             if (updateDriver) {
                 return 'Driver updated successfully';

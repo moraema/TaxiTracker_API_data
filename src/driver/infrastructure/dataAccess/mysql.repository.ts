@@ -48,14 +48,13 @@ export class MysqlDriver implements DriversRepository {
         )
     }
 
-    updateByIdDriver(driver_id: string, name: string, last_name: string, unit_code: string, image: string): Promise<boolean> {
-        const sql = 'CALL UpdateByIdDriver (?, ?, ?, ?, ?)';
+    updateByIdDriver(driver_id: string, name: string, last_name: string, image: string): Promise<boolean> {
+        const sql = 'CALL UpdateByIdDriver (?, ?, ?, ?)';
 
         return dbmysql.execute(sql, [
             driver_id,
             name || null,
-            last_name || null,
-            unit_code || null, 
+            last_name || null, 
             image || null
         ])
           .then(() => true)

@@ -44,4 +44,18 @@ export class MysqlKits implements KitsRepository {
         ]).then( () => newKit);
     }
 
+    updateKits(kit_id: string, unit_code: string, name: string): Promise<boolean> {
+        const sql = 'CALL UpdateByIdKit (?, ?, ?)';
+
+        return dbmysql.execute(sql, [
+            kit_id,
+            unit_code, 
+            name
+        ])
+        .then(() => true)
+        .catch((error: any) => {
+            console.error('Error updating kits: ', error);
+            return false
+        })
+    }
 }
