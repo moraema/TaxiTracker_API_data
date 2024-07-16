@@ -11,7 +11,7 @@ export class MysqlDriver implements DriversRepository {
 
         return dbmysql.execute(sql, [id])
            .then((res:any) => 
-            res[0] as Drivers[]
+            res[0][0] as Drivers[]
            )
     }
 

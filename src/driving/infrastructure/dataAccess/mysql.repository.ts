@@ -10,7 +10,7 @@ export class MysqlDriving implements DrivingRepository {
 
         return dbmysql.execute(sql)
            .then((res: any) => 
-            res[0] as Driving[]
+            res[0][0] as Driving[]
            )
     }
 

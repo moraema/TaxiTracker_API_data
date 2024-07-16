@@ -11,7 +11,7 @@ export class MysqlKits implements KitsRepository {
         
         return dbmysql.execute(sql, [user_id])
         .then((res:any) => 
-            res[0] as Kits[]
+            res[0][0] as Kits[]
         )   
     }
 
