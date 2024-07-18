@@ -3,12 +3,15 @@ import { GetKitsByUserId } from "../application/useCase/get.kits.userId";
 import { DeleteKits } from "../application/useCase/delete.kits";
 import { AddKits } from "../application/useCase/add.kits";
 import { UpdateKits } from "../application/useCase/update.kits";
+import { UpdateKitsUserId } from "../application/useCase/update.kits.userId";
+import { GetKitsId } from "../application/useCase/get.kits.id";
 
 import { GetKitsByUserIdController } from "./controllers/get.kits.userId.controller";
 import { DeleteKitsController } from "./controllers/delete.kit.controller";
 import { AddKitsController } from "./controllers/add.kits";
 import { UpdateKitsController } from "./controllers/update.kits";
-
+import { UpdateKitsUserIdController } from "./controllers/update.kits.userId.controller";
+import { GetKitsIdController } from "./controllers/get.kits.id.controller";
 
 const mysqlKits = new MysqlKits();
 
@@ -17,6 +20,8 @@ const getKitsByUserId = new GetKitsByUserId(mysqlKits);
 const deleteKits = new DeleteKits(mysqlKits);
 const addKits = new AddKits(mysqlKits);
 const updateKits = new UpdateKits(mysqlKits);
+const updateKitsUserId = new UpdateKitsUserId(mysqlKits);
+const getKitsId = new GetKitsId(mysqlKits);
 
 
 export const getKitsByUserIdController = new GetKitsByUserIdController(
@@ -34,4 +39,12 @@ export const addKitsController = new AddKitsController(
 
 export const updateKitsController = new UpdateKitsController(
     updateKits
+);
+
+export const updateKitsUserIdController = new UpdateKitsUserIdController(
+    updateKitsUserId
+);
+
+export const getKitsIdController = new GetKitsIdController(
+    getKitsId
 );

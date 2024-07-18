@@ -8,22 +8,22 @@ export class AddDriverController {
     async run(req: Request, res: Response) {
         try {
            
-            const image = req.file;
+        const image = req.file;
           
+         let imagedata = '';
 
-            if (!image) {
-                throw new Error('No file was uploaded.');
+            if (image) {
+                const uploadResponse = await cloudinary.v2.uploader.upload(image.path, {
+                    folder: 'taxitracker'
+                });
+
+                imagedata = uploadResponse.secure_url;
             }
 
           
-            const uploadResponse = await cloudinary.v2.uploader.upload(image.path, {
-                folder: 'taxitracker'
-            });
-
-           
             const driverData = {
                ...req.body, 
-              image: uploadResponse.secure_url 
+              image: imagedata
             };
 
             

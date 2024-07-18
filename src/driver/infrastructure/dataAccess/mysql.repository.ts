@@ -26,7 +26,7 @@ export class MysqlDriver implements DriversRepository {
             driver.name,
             driver.last_name,
             driver.pin,
-            driver.image
+            driver.image || ''
         );
 
         return dbmysql.execute(sql, [

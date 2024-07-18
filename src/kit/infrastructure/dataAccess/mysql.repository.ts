@@ -15,6 +15,7 @@ export class MysqlKits implements KitsRepository {
         )   
     }
 
+
     deleteByIdKits(kits_id: string): Promise<string> {
         const sql = 'CALL deleteKitById (?)';
 
@@ -31,7 +32,7 @@ export class MysqlKits implements KitsRepository {
        
         const newKit = new Kits(
             newKitId, 
-            kits.user_id, 
+            kits.user_id || '0',
             kits.unit_code,
             kits.name
         );
@@ -58,4 +59,31 @@ export class MysqlKits implements KitsRepository {
             return false
         })
     }
+
+    updateKistUserId(kit_id: string, user_id: string): Promise<boolean> {
+        const sql = 'CALL UpdateKistUserId(?, ?)';
+
+        return dbmysql.execute(sql, [
+            kit_id,
+            user_id
+        ])
+        .then(() => true)
+        .catch((error: any) => {
+            console.error('Error updating kits', error);
+            return false
+        })
+    }
+
+
+    getKitsId(kit_id: string): Promise<Kits[]> {
+        const sql = 'CALL GetKitsId(?)';
+
+        return dbmysql.execute(sql, [
+            kit_id
+        ])
+        .then((res:any) => 
+            res[0][0] as Kits[]
+        )
+    }
+
 }

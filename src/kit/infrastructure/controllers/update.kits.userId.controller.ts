@@ -1,24 +1,23 @@
 import { Request, Response } from "express";
-import { UpdateKits } from "../../application/useCase/update.kits";
+import { UpdateKitsUserId } from "../../application/useCase/update.kits.userId";
 
 
-export class UpdateKitsController {
-    constructor(readonly updateKitsController: UpdateKits) {}
-
+export class UpdateKitsUserIdController {
+    constructor(readonly updateKitsUserId: UpdateKitsUserId) {}
 
     async run(req: Request, res: Response) {
         const kit_id = String(req.params.id);
-        const { unit_code, name } = req.body;
+        const { user_id } = req.body;
 
         try {
 
-            const updateKits = await this.updateKitsController.run(kit_id, unit_code, name);
+            const updateKitsUserId = await this.updateKitsUserId.run(kit_id, user_id);
 
-            if (updateKits) {
-                res.status(200).send({
+            if (updateKitsUserId) {
+                res.status(200).json({
                     status: 'success',
                     message: 'kits update successfully',
-                    data: updateKits
+                    data: updateKitsUserId
                 });
             } else {
                 res.status(400).send({
@@ -29,7 +28,7 @@ export class UpdateKitsController {
         } catch (error) {
             res.status(500).send({
                 status: 'error',
-                message: 'an error ocurred ',
+                message: 'an error ocurred',
                 data: error
             })
         }
