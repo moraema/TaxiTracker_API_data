@@ -10,11 +10,7 @@ export class GetKitsId {
 
             const kits = await this.kitsRepository.getKitsId(kit_id);
 
-           if (kits) {
-             return kits
-           }  else {
-            return `There is no kit by id ${kit_id}`
-           }
+             return kits         
         } catch (error) {
             return null
         }

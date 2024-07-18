@@ -7,7 +7,7 @@ export class UpdateDriverController {
 
     async run(req: Request, res: Response) {
         const id = String(req.params.id);
-        const { name, last_name } = req.body;
+        const { name, last_name, pin } = req.body;
 
         const image = req.file;
 
@@ -23,7 +23,7 @@ export class UpdateDriverController {
 
     
         try {
-            const updateDriver = await this.updateDriver.run(id, name, last_name, imagedata );
+            const updateDriver = await this.updateDriver.run(id, name, last_name, pin, imagedata );
 
             if (updateDriver) {
                 res.status(200).send({
