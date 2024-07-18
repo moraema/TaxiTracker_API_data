@@ -6,7 +6,7 @@ export class GetKitsIdController {
     constructor(readonly getKitsId: GetKitsId) {}
 
     async run(req: Request, res: Response) {
-        const kit_id = String(req.params.id);
+        const kit_id = String(req.params.kit_id);
 
         try {
 

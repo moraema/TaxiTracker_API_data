@@ -1,4 +1,4 @@
-import { dbmysql } from "../../../database/application/mysql";
+import { query } from "../../../database/config";
 import { DriversRepository } from "../../domain/repository/drivers.repository";
 import { Drivers } from "../../domain/entity/drivers";
 import { v4 as uuidv4 } from "uuid";
@@ -6,10 +6,12 @@ import { v4 as uuidv4 } from "uuid";
 
 export class MysqlDriver implements DriversRepository {
 
+    
+
     getDriversByKitId(id: string): Promise<Drivers[]> {
         const sql = 'CALL GetDriversByKitId (?)';
 
-        return dbmysql.execute(sql, [id])
+        return query(sql, [id])
            .then((res:any) => 
             res[0][0] as Drivers[]
            )
@@ -29,7 +31,7 @@ export class MysqlDriver implements DriversRepository {
             driver.image || ''
         );
 
-        return dbmysql.execute(sql, [
+        return query(sql, [
             newDriver.id,
             newDriver.kit_id,
             newDriver.name,
@@ -42,7 +44,7 @@ export class MysqlDriver implements DriversRepository {
     deleteByIdDriver(driver_id: string): Promise<string> {
         const sql = 'CALL deleteDriverById (?)';
 
-        return dbmysql.execute(sql, [driver_id])
+        return query(sql, [driver_id])
            .then((res: any) => 
               res[0] as string
         )
@@ -51,7 +53,7 @@ export class MysqlDriver implements DriversRepository {
     updateByIdDriver(driver_id: string, name: string, last_name: string, pin: number, image: string): Promise<boolean> {
         const sql = 'CALL UpdateByIdDriver (?, ?, ?, ?, ?)';
 
-        return dbmysql.execute(sql, [
+        return query(sql, [
             driver_id,
             name || null,
             last_name || null, 
@@ -69,7 +71,7 @@ export class MysqlDriver implements DriversRepository {
     getDriverId(driver_id: string): Promise<Drivers[] | null> {
         const sql = 'CALL GetDriversId(?)'
 
-        return dbmysql.execute(sql, [driver_id])
+        return query(sql, [driver_id])
         .then((res: any) => 
             res[0][0] as Drivers[]
         )

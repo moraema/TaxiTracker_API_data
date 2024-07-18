@@ -6,7 +6,7 @@ export class GetDriverIdController {
     constructor(readonly getDriverId: GetDriversId) {}
 
     async run(req: Request, res: Response) {
-        const driver_id = String(req.params.id);
+        const driver_id = String(req.params.driver_id);
 
         try {
             const driverId = await this.getDriverId.run(driver_id);

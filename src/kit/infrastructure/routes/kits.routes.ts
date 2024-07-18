@@ -10,11 +10,11 @@ import {
 
 const kitsrouter = express.Router();
 
-kitsrouter.get('/user/:id', getKitsByUserIdController.run.bind(getKitsByUserIdController));
-kitsrouter.get('/:id', getKitsIdController.run.bind(getKitsIdController));
+kitsrouter.get('/user/:user_id', getKitsByUserIdController.run.bind(getKitsByUserIdController));
+kitsrouter.get('/:kit_id', getKitsIdController.run.bind(getKitsIdController));
 kitsrouter.delete('/:id', deleteKitsController.run.bind(deleteKitsController));
-kitsrouter.put('/data/:id', updateKitsController.run.bind(updateKitsController));
-kitsrouter.put('/user/:id', updateKitsUserIdController.run.bind(updateKitsUserIdController));
+kitsrouter.put('/data/:kit_id', updateKitsController.run.bind(updateKitsController));
+kitsrouter.put('/user/:kit_id', updateKitsUserIdController.run.bind(updateKitsUserIdController));
 kitsrouter.post('/', addKitsController.run.bind(addKitsController));
 
 export { kitsrouter };

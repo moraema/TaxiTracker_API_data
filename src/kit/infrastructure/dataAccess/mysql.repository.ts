@@ -1,4 +1,4 @@
-import { dbmysql } from "../../../database/application/mysql";
+import { query } from "../../../database/config";
 import { Kits } from "../../domain/entity/kits";
 import { KitsRepository } from "../../domain/repository/kits.repository";
 import { v4 as uuidv4 } from "uuid";
@@ -9,7 +9,7 @@ export class MysqlKits implements KitsRepository {
     getKitsByUserId(user_id: string): Promise<Kits[]> {
         const sql = 'CALL getKitsByUserId (?)';
         
-        return dbmysql.execute(sql, [user_id])
+        return query(sql, [user_id])
         .then((res:any) => 
             res[0][0] as Kits[]
         )   
@@ -19,7 +19,7 @@ export class MysqlKits implements KitsRepository {
     deleteByIdKits(kits_id: string): Promise<string> {
         const sql = 'CALL deleteKitById (?)';
 
-        return dbmysql.execute(sql, [kits_id])
+        return query(sql, [kits_id])
           .then((res: any) => 
               res[0] as string
         )
@@ -37,7 +37,7 @@ export class MysqlKits implements KitsRepository {
             kits.name
         );
 
-        return dbmysql.execute(sql, [
+        return query(sql, [
             newKit.id,
             newKit.user_id,
             newKit.unit_code,
@@ -48,7 +48,7 @@ export class MysqlKits implements KitsRepository {
     updateKits(kit_id: string, unit_code: string, name: string): Promise<boolean> {
         const sql = 'CALL UpdateByIdKit (?, ?, ?)';
 
-        return dbmysql.execute(sql, [
+        return query(sql, [
             kit_id,
             unit_code, 
             name
@@ -63,7 +63,7 @@ export class MysqlKits implements KitsRepository {
     updateKistUserId(kit_id: string, user_id: string): Promise<boolean> {
         const sql = 'CALL UpdateKistUserId(?, ?)';
 
-        return dbmysql.execute(sql, [
+        return query(sql, [
             kit_id,
             user_id
         ])
@@ -78,7 +78,7 @@ export class MysqlKits implements KitsRepository {
     getKitsId(kit_id: string): Promise<Kits[]> {
         const sql = 'CALL GetKitsId(?)';
 
-        return dbmysql.execute(sql, [
+        return query(sql, [
             kit_id
         ])
         .then((res:any) => 

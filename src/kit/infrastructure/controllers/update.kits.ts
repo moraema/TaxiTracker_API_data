@@ -7,7 +7,7 @@ export class UpdateKitsController {
 
 
     async run(req: Request, res: Response) {
-        const kit_id = String(req.params.id);
+        const kit_id = String(req.params.kit_id);
         const { unit_code, name } = req.body;
 
         try {

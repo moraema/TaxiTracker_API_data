@@ -1,6 +1,5 @@
 import express from 'express';
 import cors from 'cors';
-import { dbmysql } from './src/database/application/mysql';
 import { kitsrouter } from './src/kit/infrastructure/routes/kits.routes';
 import { driverRouter } from './src/driver/infrastructure/routes/driver.routes';
 import { starsRouter } from './src/stars/infrastructure/routes/stars.routes';
@@ -14,7 +13,7 @@ const PORT = process.env.PORT;
 
 let corsOptions = {
         origin: "*",
-        methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
+        methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS", "PUT"],
         allowedHeaders: [
             "Content-Type",
             "Authorization",
@@ -38,11 +37,6 @@ app.use('/stars', starsRouter);
 app.use('/travels', travelsRouter);
 app.use('/graphics', graphicsroutes)
 
-
-
-dbmysql.connect()
-.then(() => console.log("Database connected"))
-.catch((err) => console.error("Error connecting to database: " + err));
 
 
 app.listen(PORT, () => {

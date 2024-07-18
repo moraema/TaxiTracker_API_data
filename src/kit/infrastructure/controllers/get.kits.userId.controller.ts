@@ -5,7 +5,7 @@ export class GetKitsByUserIdController {
     constructor(readonly getKitsByUserIdUseCase: GetKitsByUserId){}
 
     async run (req: Request, res: Response) {
-        const user_id = String(req.params.id);
+        const user_id = String(req.params.user_id);
         try {
             const kits = await this.getKitsByUserIdUseCase.run(user_id);
 
@@ -18,7 +18,7 @@ export class GetKitsByUserIdController {
             } else
               res.status(404).send({
                status: "error",
-                message: `There's no kits`,
+                message: `There's no kits by this user`,
              });
         } catch(error){
             res.status(204).send({

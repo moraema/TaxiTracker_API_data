@@ -1,4 +1,4 @@
-import { dbmysql } from "../../../database/application/mysql";
+import { query } from "../../../database/config";
 import { DrivingRepository } from "../../domain/repository/driving.repository";
 import { Driving } from "../../domain/entity/driving";
 
@@ -8,7 +8,7 @@ export class MysqlDriving implements DrivingRepository {
     getDrivings(): Promise<Driving[]> {
         const sql = 'CALL getAllDrivings()';
 
-        return dbmysql.execute(sql)
+        return query(sql, [])
            .then((res: any) => 
             res[0][0] as Driving[]
            )
@@ -17,7 +17,7 @@ export class MysqlDriving implements DrivingRepository {
     getDrivingByDriverId(driver_id: string): Promise<Driving | null> {
         const sql = 'CALL getDrivingByDriverId (?)';
 
-        return dbmysql.execute(sql, [driver_id])
+        return query(sql, [driver_id])
            .then((result: any) => {
             return result[0][0] as Driving
            })
@@ -26,7 +26,7 @@ export class MysqlDriving implements DrivingRepository {
     getDrivingsByKitId(kit_id: string): Promise<Driving | null> {
         const sql = 'CALL getDrivingByKitId (?)';
 
-        return dbmysql.execute(sql, [kit_id])
+        return query(sql, [kit_id])
            .then((result: any) => {
             return result[0][0] as Driving
            })

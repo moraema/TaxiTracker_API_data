@@ -10,7 +10,7 @@ import { upload } from '../../application/service/multer';
 const driverRouter = express.Router();
 
 driverRouter.get('/kit/:id', getDriverByKitIdController.run.bind(getDriverByKitIdController));
-driverRouter.get('/:id', getDriverIdController.run.bind(getDriverIdController));
+driverRouter.get('/:driver_id', getDriverIdController.run.bind(getDriverIdController));
 driverRouter.post('/',  upload.single('image'), addDriverController.run.bind(addDriverController));
 driverRouter.patch('/:id', upload.single('image'), updateDriverController.run.bind(updateDriverController));
 driverRouter.delete('/:id', deleteDriverController.run.bind(deleteDriverController));

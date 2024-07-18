@@ -6,7 +6,7 @@ export class UpdateKitsUserIdController {
     constructor(readonly updateKitsUserId: UpdateKitsUserId) {}
 
     async run(req: Request, res: Response) {
-        const kit_id = String(req.params.id);
+        const kit_id = String(req.params.kit_id);
         const { user_id } = req.body;
 
         try {
