@@ -4,7 +4,6 @@ export class Driving {
         readonly driver_id: string,
         readonly travel_id: number,
         readonly datetime: Date,
-        readonly impact_force: number,
         readonly acceleration: number,
         readonly deceleration: number,
         readonly vibrations: number,
