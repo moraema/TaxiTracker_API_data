@@ -6,11 +6,12 @@ export class GetTravelsByDriverDistanceController {
     constructor(readonly getTravelsByDriverIdDistance: GetTravelsByDriverDistance) {}
 
     async run(req: Request, res: Response) {
-        const driver_id = String(req.params.driver_id);
+        const kit_id = String(req.params.kit_id);
+        const date = String(req.params.date)
 
         try {
 
-            const distanceDriverId = await this.getTravelsByDriverIdDistance.run(driver_id);
+            const distanceDriverId = await this.getTravelsByDriverIdDistance.run(kit_id, date);
 
             if (distanceDriverId) {
                 res.status(200).send({
