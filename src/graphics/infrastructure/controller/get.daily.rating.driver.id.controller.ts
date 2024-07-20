@@ -9,12 +9,12 @@ export class GetDailyRatingsByDriverAndDateController {
 
     async run(req: Request, res: Response) {
    
-        const driver_id = String(req.params.driver_id);
+        const kit_id = String(req.params.kit_id);
         const date = String(req.params.date);
 
         try{
          
-            const dailyRatingByDriver = await this.getDailyRatingsByDriverAndDate.run(driver_id, date);
+            const dailyRatingByDriver = await this.getDailyRatingsByDriverAndDate.run(kit_id, date);
 
         
             if (dailyRatingByDriver) {
