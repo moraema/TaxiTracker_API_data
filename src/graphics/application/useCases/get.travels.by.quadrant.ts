@@ -12,10 +12,8 @@ export class GetTravelsByQuadrant {
                 throw new Error(`travels through quadrant not found for ${kit_id}`)
             };
 
-            const response = await axios.get('http://127.0.0.1:5000/process', {
-                params: {
-                    data: JSON.stringify(travelsbyquadrant)
-                }
+            const response = await axios.post('http://127.0.0.1:5000/process', {
+                    data: JSON.stringify(travelsbyquadrant)     
             });
 
             return response.data;

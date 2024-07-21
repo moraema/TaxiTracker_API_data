@@ -17,10 +17,8 @@ export class GetDailyRatingsByDriverAndDate {
             }
 
  
-            const response = await axios.get('http://127.0.0.1:5000/process', {
-                params: {
+            const response = await axios.post('http://127.0.0.1:5000/process', {
                     data: JSON.stringify(graphicsRatingByDriver)
-                }
             });
 
             return response.data;

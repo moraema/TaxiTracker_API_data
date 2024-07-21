@@ -12,10 +12,8 @@ export class GetActivityTime {
                 throw new Error(`activity tyme not found for ${kit_id}`)
             };
 
-            const response = await axios.get('http://127.0.0.1:5000/process', {
-                params: {
-                    data: JSON.stringify(activityTime)
-                }
+            const response = await axios.post('http://127.0.0.1:5000/process', {
+                 data: JSON.stringify(activityTime)
             });
 
             return response.data;

@@ -14,10 +14,8 @@ export class GetTravelsByDriverDistance {
                 throw new Error(`driver id not found ${kit_id}`)
             }
 
-            const response = await axios.get('http://127.0.0.1:5000/process', {
-                params: {
+            const response = await axios.post('http://127.0.0.1:5000/process', {
                     data: JSON.stringify(graphicsTravelsByDriverDistance)
-                }
             });
 
             return response.data;
