@@ -64,4 +64,13 @@ export class MysqlGraphics implements GraphicsRepository {
             return result[0][0] as Graphics;
         });
     }
+
+    //grafica de evaluaciones por conductor
+    GetEvaluationByDriverId(driver_id: string): Promise<Graphics | null> {
+        const sql = "CALL getDrivingByDriverId(?)";
+
+        return query(sql, [driver_id]).then((result: any) => {
+            return result[0][0] as Graphics;
+        });
+    }
 }

@@ -5,9 +5,6 @@ import { v4 as uuidv4 } from "uuid";
 
 
 export class MysqlDriver implements DriversRepository {
-
-    
-
     getDriversByKitId(id: string): Promise<Drivers[]> {
         const sql = 'CALL GetDriversByKitId (?)';
 
@@ -70,6 +67,15 @@ export class MysqlDriver implements DriversRepository {
 
     getDriverId(driver_id: string): Promise<Drivers[] | null> {
         const sql = 'CALL GetDriversId(?)'
+
+        return query(sql, [driver_id])
+        .then((res: any) => 
+            res[0][0] as Drivers[]
+        )
+    }
+
+    getDriverStats(driver_id: string): Promise<Drivers[] | null> {
+        const sql = 'CALL GetAllDriverData(?)'
 
         return query(sql, [driver_id])
         .then((res: any) => 

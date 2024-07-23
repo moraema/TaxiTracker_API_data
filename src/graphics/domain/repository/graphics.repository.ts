@@ -8,4 +8,6 @@ export interface GraphicsRepository {
     travelsbyweek(kit_id: string): Promise<Graphics | null>;
     travelsbyquadrant(kit_id: string): Promise<Graphics | null>; 
     activityTime(kit_id: string): Promise<Graphics | null>; 
+
+    GetEvaluationByDriverId(driver_id: string): Promise<Graphics | null>;
 }

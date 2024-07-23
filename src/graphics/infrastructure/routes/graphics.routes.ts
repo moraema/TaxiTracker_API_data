@@ -5,7 +5,8 @@ import {
     getDurationTravelsByDayController,
     getTravelsByWeekController,
     getTravelsByQuadranteController,
-    getActivityTimeController
+    getActivityTimeController,
+    getEvaluationByDriverIdController
 } from '../dependencies';
 
 
@@ -18,5 +19,6 @@ graphicsroutes.get('/travels-week/:kit_id', getTravelsByWeekController.run.bind(
 graphicsroutes.get('/travels-quadrant/:kit_id', getTravelsByQuadranteController.run.bind(getTravelsByQuadranteController));//
 graphicsroutes.get('/activity-time/:kit_id', getActivityTimeController.run.bind(getActivityTimeController)); // listo
 
+graphicsroutes.get('/driver-evaluation/:driver_id', getEvaluationByDriverIdController.run.bind(getEvaluationByDriverIdController)); // listo
 
 export { graphicsroutes }

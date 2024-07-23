@@ -40,4 +40,4 @@ const server = app.listen(PORT, () => {
     console.log('Server running on port', PORT)
 })
 
-server.setTimeout(10000);
+server.setTimeout(25000);

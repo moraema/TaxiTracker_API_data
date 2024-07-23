@@ -6,4 +6,5 @@ export interface DriversRepository {
      addDriver(driver: Drivers): Promise<Drivers>
      deleteByIdDriver(driver_id: string): Promise<string>;
      updateByIdDriver(driver_id: string, name: string, last_name:string, pin: number, image: string): Promise<boolean>;
+     getDriverStats(driver_id: string): Promise<Drivers[] | null>;
 }
