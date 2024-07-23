@@ -1,27 +1,32 @@
 import { GraphicsRepository } from "../../domain/repository/graphics.repository";
 import axios from "axios";
 
-
 export class GetDurationTravelsbyDay {
     constructor(readonly graphicsRepository: GraphicsRepository) {}
 
     async run(kit_id: string, date: string) {
-         try {
+        try {
             const durationTravels = await this.graphicsRepository.durationTravelsbyDay(kit_id, date);
 
             if (!durationTravels) {
                 throw new Error(`duration of traves by id not found ${kit_id}`);
             }
 
-            const response = await axios.get('http://127.0.0.1:5000/process', {
-                params: {
-                    data: JSON.stringify(durationTravels)
-                }
-            });
+            const postData = {
+                data: durationTravels
+            };
+
+            const response = await axios.post('https://rjo3pr52bwozsgfixip6ugsr7i0ernzm.lambda-url.us-east-1.on.aws', postData);
+
+            if (!response.data) {
+                console.error('Lambda response is empty');
+                throw new Error('Lambda response is empty');
+            }
 
             return response.data;
-         } catch (error) {
+        } catch (error) {
+            console.error('Error in run:', error);
             return null;
-         }
+        }
     }
 }

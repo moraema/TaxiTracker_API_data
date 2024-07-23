@@ -12,11 +12,16 @@ export class GetActivityTime {
                 throw new Error(`activity tyme not found for ${kit_id}`)
             };
 
-            const response = await axios.get('http://127.0.0.1:5000/process', {
-                params: {
-                    data: JSON.stringify(activityTime)
-                }
-            });
+            const postData = {
+                data: activityTime
+            }
+
+            const response = await axios.post('https://eeo5aemp2gxjz7ykphwi5fkbcu0kftrh.lambda-url.us-east-1.on.aws', postData);
+
+            if (!response.data) {
+                console.error('Lambda response is empty');
+                throw new Error('Lambda response is empty');
+            }
 
             return response.data;
 
