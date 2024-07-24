@@ -16,7 +16,7 @@ export class GetDurationTravelsbyDay {
                 data: durationTravels
             };
 
-            const response = await axios.post('https://rjo3pr52bwozsgfixip6ugsr7i0ernzm.lambda-url.us-east-1.on.aws', postData);
+            const response = await axios.post('https://yz4buk6enmccwxjsiqgtxkfbnq0hhioj.lambda-url.us-east-1.on.aws/', postData);
 
             if (!response.data) {
                 console.error('Lambda response is empty');

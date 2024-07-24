@@ -20,7 +20,7 @@ export class GetTravelsByDriverDistance {
             };
 
             // Enviar solicitud a la función Lambda
-            const response = await axios.post('https://eoox3srw4q246yjn7cxjiwownq0agqiy.lambda-url.us-east-1.on.aws', postData);
+            const response = await axios.post('https://jg4llqcajaapeuaro5k7n2xore0wcfxv.lambda-url.us-east-1.on.aws', postData);
 
             // Verificar respuesta de la función Lambda
             if (!response.data) {

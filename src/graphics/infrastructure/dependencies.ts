@@ -1,4 +1,5 @@
 import { MysqlGraphics } from "./dataAcess/mysql.repository";
+import { EvaluationService } from "./services/EvaluationService";
 import { GetDailyRatingsByDriverAndDate } from "../application/useCases/get.daily.ratings.driver.id";
 import { GetTravelsByDriverDistance } from "../application/useCases/get.travels.driverId.distance";
 import { GetDurationTravelsbyDay } from "../application/useCases/duration.travels.day";
@@ -16,7 +17,7 @@ import { GetActivityTimeController } from "./controller/get.activity.time.contro
 import { GetEvaluationByDriverIdController } from "./controller/get.evaluation.driver";
 
 const mysqlGraphics = new MysqlGraphics();
-
+const evaluationService = new EvaluationService();
 
 const getDailyRatingsByDriverAndDate = new GetDailyRatingsByDriverAndDate(mysqlGraphics);
 const getTravelsByDriverIdDistance = new GetTravelsByDriverDistance(mysqlGraphics);
@@ -24,7 +25,7 @@ const getDurationTravelsByDay = new GetDurationTravelsbyDay(mysqlGraphics);
 const getTravelsByWeek = new GetTravelsByWeek(mysqlGraphics);
 const getTravelsByQuadrant = new GetTravelsByQuadrant(mysqlGraphics);
 const getActivityTime = new GetActivityTime(mysqlGraphics);
-const getEvaluationByDriverId = new GetEvaluationByDriverId(mysqlGraphics);
+const getEvaluationByDriverId = new GetEvaluationByDriverId(mysqlGraphics, evaluationService);
 
 export const  getDailyRatingsByDriverController = new GetDailyRatingsByDriverAndDateController(
     getDailyRatingsByDriverAndDate

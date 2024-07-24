@@ -7,7 +7,12 @@ export class GetStatsByDriverId {
         try {
             const stats = await this.driverRepository.getDriverStats(driver_id);
 
-            return stats;
+            if (stats) {
+                return stats[0];
+            } else {
+                return null;
+            }
+            
         } catch (error) {
             return null;
         }

@@ -16,7 +16,7 @@ export class GetActivityTime {
                 data: activityTime
             }
 
-            const response = await axios.post('https://eeo5aemp2gxjz7ykphwi5fkbcu0kftrh.lambda-url.us-east-1.on.aws', postData);
+            const response = await axios.post('https://mhhkgbgsak75cgcmdgvo3dj2440miosg.lambda-url.us-east-1.on.aws', postData);
 
             if (!response.data) {
                 console.error('Lambda response is empty');

@@ -16,11 +16,7 @@ export class GetTravelsByQuadrant {
                 data: travelsbyquadrant
             };
 
-            console.log('postData', postData);
-
-            const response = await axios.post('https://324fvzufe6dri2gtxlm5e2mvc40agdoe.lambda-url.us-east-1.on.aws', postData);
-
-            console.log('response', response);
+            const response = await axios.post('https://2kdzabjfusuxywilkmmsdd2hvy0xagmd.lambda-url.us-east-1.on.aws', postData);
 
             if (!response.data) {
                 console.error('Lambda response is empty');
