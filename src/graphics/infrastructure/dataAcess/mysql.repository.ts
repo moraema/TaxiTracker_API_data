@@ -2,72 +2,75 @@ import { query } from "../../../database/config";
 import { GraphicsRepository } from "../../domain/repository/graphics.repository";
 import { Graphics } from "../../domain/entity/graphics";
 
-
 export class MysqlGraphics implements GraphicsRepository {
-   
-    GetDailyRatingsByDriverAndDate(kit_id: string, date: string): Promise<Graphics | null> {
-        const sql = 'CALL GetDailyRatingsByKitAndDate (?, ?)';
+    //obtener grafica de calificaciones por dia
+    GetDailyRatingsByDriverAndDate(
+        kit_id: string
+    ): Promise<Graphics | null> {
+        const sql = "CALL AverageStarsByKitId(?)";
 
-        return query(sql, [kit_id, date])
-           .then((result: any) => {
+        return query(sql, [kit_id]).then((result: any) => {
             return result[0][0] as Graphics;
-           })
+        });
     }
 
-    GetTravelsByDriverDistance(kit_id: string, date: string): Promise<Graphics | null> {
-        const sql = 'CALL GetTravelDataByKitId (?, ?)';
+    //grafica de distancia promedio por horas en una semana (microservicio)
+    GetTravelsByDriverDistance(
+        kit_id: string,
+        date: string
+    ): Promise<Graphics | null> {
+        const sql = "CALL GetDistanceTravlesByDateRange(?, ?)";
 
-        return query(sql, [
-            kit_id,
-            date])
-          .then((result: any) => {
+        return query(sql, [kit_id, date]).then((result: any) => {
             return result[0][0] as Graphics;
-          })
+        });
     }
 
-   durationTravelsbyDay(kit_id: string, date: string): Promise<Graphics | null> {
-       const sql = 'CALL GetDurationTravlesByDayAndDate(?, ?)';
+    //grafica de duracion de viajes por horas en una semana (microservicio)
+    durationTravelsbyDay(
+        kit_id: string,
+        date: string
+    ): Promise<Graphics | null> {
+        const sql = "CALL GetDurationTravlesByDateRange(?, ?)";
 
-       return query(sql, [
-        kit_id,
-        date
-       ])
-       .then((result: any) => {
-        return result[0][0] as Graphics;
-       })
-   }
+        return query(sql, [kit_id, date]).then((result: any) => {
+            return result[0][0] as Graphics;
+        });
+    }
 
+    //grafica de cantidad de viajes en una semana
+    travelsbyweek(kit_id: string): Promise<Graphics | null> {
+        const sql = "CALL CountWeekTravelsByKitId(?)";
 
-   travelsbyweek(kit_id: string): Promise<Graphics | null> {
-       const sql = 'CALL GetLastWeekTravelDataByKitId(?)';
+        return query(sql, [kit_id]).then((result: any) => {
+            return result[0][0] as Graphics;
+        });
+    }
 
-       return query(sql, [
-        kit_id
-       ])
-       .then((result: any) => {
-        return result[0][0] as Graphics;
-       })
-   }
+    // grafica de pastel de distribucion de cuadrantes (microservicio)
+    travelsbyquadrant(kit_id: string): Promise<Graphics | null> {
+        const sql = "CALL GetAllTravelsDataWithCoordinatesByKitId(?)";
 
-   travelsbyquadrant(kit_id: string): Promise<Graphics | null> {
-       const sql = 'CALL GetLastWeekTravelDataWithCoordinatesByKitId(?)';
+        return query(sql, [kit_id]).then((result: any) => {
+            return result[0][0] as Graphics;
+        });
+    }
 
-       return query(sql, [
-        kit_id
-       ])
-       .then((result: any) => {
-        return result[0][0] as Graphics;
-       })
-   }
+    //grafica de tiempo de actividad por dia de la semana (microservicio)
+    activityTime(kit_id: string): Promise<Graphics | null> {
+        const sql = "CALL GetActivityTime(?)";
 
-   activityTime(kit_id: string): Promise<Graphics | null> {
-       const sql = 'CALL GetActivityTime(?)';
+        return query(sql, [kit_id]).then((result: any) => {
+            return result[0][0] as Graphics;
+        });
+    }
 
-       return query(sql, [
-        kit_id
-       ])
-       .then((result: any) => {
-        return result[0][0] as Graphics;
-       })
-   }
+    //grafica de evaluaciones por conductor
+    GetEvaluationByDriverId(driver_id: string): Promise<Graphics | null> {
+        const sql = "CALL getDrivingByDriverId(?)";
+
+        return query(sql, [driver_id]).then((result: any) => {
+            return result[0][0] as Graphics;
+        });
+    }
 }

@@ -4,13 +4,14 @@ import { AddDriver } from "../application/useCase/add.driver";
 import { DeleteDriver } from "../application/useCase/delete.driver";
 import { UpdateDriver } from "../application/useCase/update.driver";
 import { GetDriversId } from "../application/useCase/get.driver.id";
-
+import { GetStatsByDriverId } from "../application/useCase/get.stats.driver";
 
 import  { GetDriversByKitIdController} from './controller/get.id.driver.kits';
 import { AddDriverController } from "./controller/create.driver";
 import { DeleteDriverController } from "./controller/delete.driver";
 import { UpdateDriverController } from "./controller/update.driver.controller";
 import { GetDriverIdController } from "./controller/get.driver.id.controller";
+import { GetStatsByDriveIdController } from "./controller/get.stats.driver.id";
 
 const mysqldrivers = new MysqlDriver();
 
@@ -20,7 +21,7 @@ const addDriver = new AddDriver(mysqldrivers);
 const deleteDriver = new DeleteDriver(mysqldrivers);
 const updateDriver = new UpdateDriver(mysqldrivers);
 const getDriverId = new GetDriversId(mysqldrivers);
-
+const getStatsByDriverId = new GetStatsByDriverId(mysqldrivers);
 
 
 export const getDriverByKitIdController = new GetDriversByKitIdController(
@@ -41,4 +42,8 @@ export const updateDriverController = new UpdateDriverController(
 
 export const getDriverIdController = new GetDriverIdController(
     getDriverId
+);
+
+export const getStatsByDriverIdController = new GetStatsByDriveIdController(
+    getStatsByDriverId
 );

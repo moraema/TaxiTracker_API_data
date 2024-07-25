@@ -12,9 +12,16 @@ export class GetTravelsByQuadrant {
                 throw new Error(`travels through quadrant not found for ${kit_id}`)
             };
 
-            const response = await axios.post('http://127.0.0.1:5000/process', {
-                    data: JSON.stringify(travelsbyquadrant)     
-            });
+            const postData = {
+                data: travelsbyquadrant
+            };
+
+            const response = await axios.post('https://2kdzabjfusuxywilkmmsdd2hvy0xagmd.lambda-url.us-east-1.on.aws', postData);
+
+            if (!response.data) {
+                console.error('Lambda response is empty');
+                throw new Error('Lambda response is empty');
+            }
 
             return response.data;
         } catch (error) {

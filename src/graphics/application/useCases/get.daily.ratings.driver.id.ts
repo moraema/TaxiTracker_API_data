@@ -6,22 +6,17 @@ export class GetDailyRatingsByDriverAndDate {
     constructor (readonly graphicsRepository: GraphicsRepository) {}
 
 
-    async run(kit_id: string, date: string) {
+    async run(kit_id: string) {
 
         try {
 
-            const graphicsRatingByDriver = await this.graphicsRepository.GetDailyRatingsByDriverAndDate(kit_id, date);
+            const graphicsRatingByDriver = await this.graphicsRepository.GetDailyRatingsByDriverAndDate(kit_id);
 
             if (!graphicsRatingByDriver) {
                throw new Error(`driver id not found ${kit_id}`);
             }
 
- 
-            const response = await axios.post('http://127.0.0.1:5000/process', {
-                    data: JSON.stringify(graphicsRatingByDriver)
-            });
-
-            return response.data;
+            return graphicsRatingByDriver;
         } catch (error) {
             console.error('Error in GetDailyRatingsByDriverAndDate:', error);
             return null;

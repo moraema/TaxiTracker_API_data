@@ -14,6 +14,7 @@ export class GetTravelsByDriverId {
             }
             return travelsDriverId;
         } catch ( error ) {
+            console.error('Error in GetTravelsByDriverId:', error);
             return null;
         }
     }

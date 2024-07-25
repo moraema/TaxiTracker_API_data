@@ -4,7 +4,8 @@ import {
     addDriverController,
     deleteDriverController,
     updateDriverController,
-    getDriverIdController
+    getDriverIdController,
+    getStatsByDriverIdController
  } from '../dependencies';
 import { upload } from '../../application/service/multer';
 const driverRouter = express.Router();
@@ -14,6 +15,6 @@ driverRouter.get('/:driver_id', getDriverIdController.run.bind(getDriverIdContro
 driverRouter.post('/',  upload.single('image'), addDriverController.run.bind(addDriverController));
 driverRouter.patch('/:id', upload.single('image'), updateDriverController.run.bind(updateDriverController));
 driverRouter.delete('/:id', deleteDriverController.run.bind(deleteDriverController));
-
+driverRouter.get('/stats/:driver_id', getStatsByDriverIdController.run.bind(getStatsByDriverIdController));
 
 export { driverRouter }

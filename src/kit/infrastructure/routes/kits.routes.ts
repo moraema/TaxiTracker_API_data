@@ -10,7 +10,7 @@ import {
 
 const kitsrouter = express.Router();
 
-kitsrouter.get('/user/:user_id', getKitsByUserIdController.run.bind(getKitsByUserIdController));
+kitsrouter.get('/user/:id', getKitsByUserIdController.run.bind(getKitsByUserIdController));
 kitsrouter.get('/:kit_id', getKitsIdController.run.bind(getKitsIdController));
 kitsrouter.delete('/:id', deleteKitsController.run.bind(deleteKitsController));
 kitsrouter.put('/data/:kit_id', updateKitsController.run.bind(updateKitsController));

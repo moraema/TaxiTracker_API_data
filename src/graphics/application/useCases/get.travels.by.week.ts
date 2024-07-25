@@ -14,12 +14,9 @@ export class GetTravelsByWeek {
                 throw new Error(`travels id not found ${kit_id}`)
             };
 
-            const response = await axios.post('http://127.0.0.1:5000/process', {
-                    data: JSON.stringify(travelsbyweek)
-            });
-
-            return response.data;
+            return travelsbyweek;
         } catch (error) {
+            console.error(error);
             return null;
         }
     }

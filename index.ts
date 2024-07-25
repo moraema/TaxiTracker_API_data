@@ -26,7 +26,6 @@ let corsOptions = {
         ],
 };
 
-
 app.use(cors(corsOptions));
 app.use(express.json());
 
@@ -37,8 +36,8 @@ app.use('/stars', starsRouter);
 app.use('/travels', travelsRouter);
 app.use('/graphics', graphicsroutes)
 
-
-
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
     console.log('Server running on port', PORT)
 })
+
+server.setTimeout(30000);

@@ -5,11 +5,11 @@ export class GetKitsByUserIdController {
     constructor(readonly getKitsByUserIdUseCase: GetKitsByUserId){}
 
     async run (req: Request, res: Response) {
-        const user_id = String(req.params.user_id);
+        const user_id = String(req.params.id);
         try {
             const kits = await this.getKitsByUserIdUseCase.run(user_id);
 
-            if (kits?.length) {
+            if (kits) {
                 res.status(200).send({
                     status: 'success',
                     message: 'Kits recovered by user id successfully',

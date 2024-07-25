@@ -2,7 +2,6 @@ import { query } from "../../../database/config";
 import { DrivingRepository } from "../../domain/repository/driving.repository";
 import { Driving } from "../../domain/entity/driving";
 
-
 export class MysqlDriving implements DrivingRepository {
 
     getDrivings(): Promise<Driving[]> {
